@@ -75,17 +75,3 @@ class TestRevList < MiniTest::Unit::TestCase
     assert_equal expected, actual
   end
 end
-
-
-
-
-
-
-
-
-
-# last = test_stack.pop
-# print "#{last.value}\n"
-
-# print "-------------\n"
-# print_values(test_stack.data)
