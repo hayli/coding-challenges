@@ -19,6 +19,17 @@ class Image
     end
   end
   
+    def output_blurred
+    # Loop over each row in array.
+    self.blurred.each do |row|
+      # Loop over each cell in the row.
+      row.each do |pixel|
+        print pixel
+      end
+      puts "\n"
+    end
+  end
+  
   def image_blur(distance: 1)
     until distance < 1 do
       pixels_on = []
