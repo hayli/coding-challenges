@@ -18,7 +18,10 @@ class TestImageBlur < MiniTest::Unit::TestCase
             [0,0,0,1]
         ]
         
-        assert_equal expected, image.image_blur
+        actual = image.image_blur
+        
+        assert_equal expected, actual
+        actual.output
     end
     
     def test_imageBlur2
@@ -55,6 +58,9 @@ class TestImageBlur < MiniTest::Unit::TestCase
             [0,0,0,0,0,1,1,1,1],
         ]
         
-        assert_equal expected, image.image_blur(distance: 3)
+        actual = image.image_blur(distance:3)
+        
+        assert_equal expected, actual
+        actual.output
     end
 end
