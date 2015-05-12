@@ -19,7 +19,7 @@ class Image
     end
   end
   
-    def output_blurred
+  def output_blurred
     # Loop over each row in array.
     self.blurred.each do |row|
       # Loop over each cell in the row.
