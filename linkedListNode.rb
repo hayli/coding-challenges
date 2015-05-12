@@ -17,18 +17,26 @@ def print_values(list_node)
   end
 end
 
-def reverse_list2(list, previous = nil)
-  if previous.nil?
-    head = LinkedListNode.new(list.value)
-  else
-    head = LinkedListNode.new(list.value, previous)
-  end
+# def reverse_list2(list, previous = nil)
+#   if previous.nil?
+#     head = LinkedListNode.new(list.value)
+#   else
+#     head = LinkedListNode.new(list.value, previous)
+#   end
   
-  if list.next_node.nil?
-    return head
-  else
-    reverse_list2(list.next_node, head)
-  end
+#   if list.next_node.nil?
+#     return head
+#   else
+#     reverse_list2(list.next_node, head)
+#   end
+# end
+
+def reverse_list2 (list, previous = nil)
+  head = Marshal.load(Marshal.dump(list))
+  next_iter = head.next_node          # keep track of next iteration step
+  head.next_node = previous           # flip-flip list pointer
+  return head if next_iter.nil?       # return results accumulator if done
+  reverse_list2(next_iter, head)      # otherwise, recursive traversal
 end
 
 def is_infinite(list)

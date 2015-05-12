@@ -5,7 +5,6 @@ class Image
   
   def initialize(img_array)
     self.img = img_array
-    self.blurred = Marshal.load(Marshal.dump(img_array))
   end
   
   def output
@@ -31,11 +30,12 @@ class Image
   end
   
   def image_blur(distance: 1)
+    blurred = Marshal.load(Marshal.dump(self.img))
     until distance < 1 do
       pixels_on = []
       
       # Loop over each row in array.
-      self.blurred.each_with_index do |row,i|
+      blurred.each_with_index do |row,i|
         # Loop over each cell in the row.
         row.each_with_index do |pixel,j|
           if pixel == 1
@@ -48,20 +48,20 @@ class Image
       #switching on pixels near the on-pixels
       pixels_on.each do |k|
         #changing pixel to the right
-        if self.blurred[k.last].fetch(k.last+1, false) 
-          self.blurred[k.first][k.last+1] = 1
+        if blurred[k.last].fetch(k.last+1, false) 
+          blurred[k.first][k.last+1] = 1
         end
         #changing pixel to the left
-        if self.blurred[k.last].fetch(k.last-1, false)
-          self.blurred[k.first][k.last-1] = 1
+        if blurred[k.last].fetch(k.last-1, false)
+          blurred[k.first][k.last-1] = 1
         end
         #changing pixel to the top
-        if self.blurred.fetch(k.first-1, false)
-          self.blurred[k.first-1][k.last] = 1
+        if blurred.fetch(k.first-1, false)
+          blurred[k.first-1][k.last] = 1
         end
         #changing pixel to the bottom
-        if self.blurred.fetch(k.first+1, false)
-          self.blurred[k.first+1][k.last] = 1
+        if blurred.fetch(k.first+1, false)
+          blurred[k.first+1][k.last] = 1
         end
       end
       
@@ -75,6 +75,6 @@ class Image
       
       distance -= 1
     end
-    return self.blurred
+    return Image.new(blurred)
   end
 end
