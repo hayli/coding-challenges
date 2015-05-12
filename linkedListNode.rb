@@ -17,20 +17,6 @@ def print_values(list_node)
   end
 end
 
-# def reverse_list2(list, previous = nil)
-#   if previous.nil?
-#     head = LinkedListNode.new(list.value)
-#   else
-#     head = LinkedListNode.new(list.value, previous)
-#   end
-  
-#   if list.next_node.nil?
-#     return head
-#   else
-#     reverse_list2(list.next_node, head)
-#   end
-# end
-
 def reverse_list2 (list, previous = nil)
   head = Marshal.load(Marshal.dump(list))
   next_iter = head.next_node          # keep track of next iteration step

@@ -65,14 +65,6 @@ class Image
         end
       end
       
-      # if distance == 1
-      #   print self.blurred
-      # else
-      #   image_blur(distance: distance-1)
-      #   puts "-----------"
-      #   print self.blurred
-      # end
-      
       distance -= 1
     end
     return Image.new(blurred)

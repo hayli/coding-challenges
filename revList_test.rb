@@ -13,11 +13,6 @@ class TestRevList < MiniTest::Unit::TestCase
     
     rev = reverse_list1(@@node3)
     actual = [rev.value, rev.next_node.value, rev.next_node.next_node.value]
-    
-    # puts"\ntest reverse_list1"
-    # print_values(@@node3)
-    # puts "-------"
-    # print_values(rev)
 
     assert_equal expected, actual
   end
@@ -27,11 +22,6 @@ class TestRevList < MiniTest::Unit::TestCase
     
     rev = reverse_list2(@@node3)
     actual = [rev.value, rev.next_node.value, rev.next_node.next_node.value]
-    
-    # puts "\ntest reverse_list2"
-    # print_values(@@node3)
-    # puts "-------"
-    # print_values(rev)
     
     assert_equal expected, actual
   end
@@ -62,15 +52,8 @@ class TestRevList < MiniTest::Unit::TestCase
     test_stack.push(@@node2)
     test_stack.push(@@node1)
     
-    # puts "\nstack"
-    # print_values(test_stack.data)
-    
     expected = @@node1.value
     actual = test_stack.pop.value
-    
-    # puts "-------------\n"
-    # puts "popped = #{actual}"
-    # print_values(test_stack.data)
     
     assert_equal expected, actual
   end
